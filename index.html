@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>         
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="cnig" content="yes">
+    <title>Controles básicos</title>
+    <!-- Estilo de la API -->
+    <link type="text/css" rel="stylesheet" href="https://componentes.idee.es/api-idee/assets/css/apiidee.ol.min.css">          
+
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+  </head>
+
+  <body>
+      <!-- Contenedor principal del mapa -->
+      <div id="mapjs" class="m-container"></div>
+      <!-- Ficheros javascript de la API -->
+      <script type="text/javascript" src="https://componentes.idee.es/api-idee/vendor/browser-polyfill.js"></script>          
+      <script type="text/javascript" src="https://componentes.idee.es/api-idee/js/apiidee.ol.min.js"></script>        
+      <script type="text/javascript" src="https://componentes.idee.es/api-idee/js/configuration.js"></script>         
+
+
+      <script type="text/javascript">
+        // Configuración del mapa
+        const mapjs = IDEE.map({
+          container: 'mapjs', //id del contenedor del mapa
+
+          // controls: ['panzoombar','panzoom', 'scale*true', 'scaleline', 'rotate', 'location', 'backgroundlayers'],  
+
+          
+          controls: ['location'],// Modificar a gusto la siguiente lista con los valores arriba indicados
+          zoom: 10,
+          maxZoom: 20,
+          minZoom: 4,
+          center: [-467062.8225, 4683459.6216],
+        });
+
+        // Otras formas de añadir controles
+        //mapjs.addControls(['scale', 'location', 'backgroundlayers']);
+        //mapjs.addControls([
+          //new IDEE.control.Rotate(),
+          //new IDEE.control.Panzoombar()]);
+
+
+        // Obtener array de controles del mapa
+        const controles = mapjs.getControls();
+
+        // Acceso y activación de un control por código:
+        const ctrlLocation = mapjs.getControls({ name: 'location' })[0];
+        ctrlLocation.activate(); //para activarlo
+        ctrlLocation.deactivate(); //para desactivarlo
+
+      </script>
+  </body>
+</html>
+
+          
